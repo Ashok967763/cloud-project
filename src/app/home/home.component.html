@@ -1,11 +1,11 @@
-﻿<!-- <h1>Hi {{currentUser.firstName}}!</h1>
+﻿<h1>Hi {{currentUser.firstName}}!</h1>
 <h3>All registered users:</h3>
 <ul>
     <li *ngFor="let user of users">
         {{user.username}} ({{user.firstName}} {{user.lastName}})
         - <a (click)="deleteUser(user.id)" class="text-danger">Delete</a>
     </li>
-</ul> -->
+</ul>
 
 
 <h1>Hi {{currentUser.firstName}}!</h1>
@@ -15,3 +15,22 @@
     <li>User Name: {{currentUser.username}}</li>
     <li>Email: {{currentUser.email}}</li>
 </ul>
+
+<form [formGroup]="filedata" (ngSubmit)="onUpload(filedata.value)">
+    <div class="form-group">
+        <label for="file">Upload File</label>
+        <input type="file" (change)="onSelectFile($event)" accept=".txt" formControlName="file" class="form-control" />
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">
+            Upload
+        </button>
+    </div>
+</form>
+
+<h1>File Details</h1>
+<ul>
+    <li>Words Count: <span id="display_File_count">0</span></li>
+    <li>Download : {{uploadedFile}} <button (click)="download()" class="btn btn-primary">Download</button></li>
+</ul>
+
